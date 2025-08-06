@@ -12,8 +12,6 @@ const PokemonCard = ({ pokemon, onCardClick }) => {
     if (!pokemon) {
         return <p>No Pokemon data</p>;
     }
-    console.log("ZZZZZZZZ pokemon: ", pokemon.name);
-    console.log("ZZZZZZZZ pokemon url : ", pokemon.url);
 
     const [pokemonData, setPokemonData] = useState([]);
     const [loadingData, setLoadingData] = useState(true);
@@ -24,8 +22,6 @@ const PokemonCard = ({ pokemon, onCardClick }) => {
                 setLoadingData(true);
                 const response = await axios.get(pokemon.url);
                 setPokemonData(response.data);
-                console.log("bbbbbbbbbbbbbbbbbbbbb basic  response:  ", response);
-
             } catch (error) {
                 console.error("Error fetching Pokemon: ", error);
             } finally {
@@ -49,7 +45,6 @@ const PokemonCard = ({ pokemon, onCardClick }) => {
         }
     };
 
-    console.log('Pokemon data 3333 :', pokemonData.types);
     return (
         <div className="pokemon-card"
             onClick={handleCardClick}

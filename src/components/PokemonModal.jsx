@@ -16,7 +16,7 @@ const PokemonModal = ({ pokemon, onClose }) => {
         return <p>No Pokemon data</p>;
     }
 
-    // Fetch Pokemon details if we only have basic info
+    // Fetch Pokemon details for basic info
     useEffect(() => {
         const fetchPokemonDetails = async () => {
             try {
@@ -67,7 +67,6 @@ const PokemonModal = ({ pokemon, onClose }) => {
         document.addEventListener('keydown', handleEscape);
         return () => document.removeEventListener('keydown', handleEscape);
     }, [onClose]);
-
 
     return (
         <div className="modal-backdrop" onClick={handleBackdropClick}>

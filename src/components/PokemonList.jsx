@@ -17,24 +17,23 @@ const PokemonList = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredPokemon, setFilteredPokemon] = useState([]);
     const [searchNotFound, setSearchNotFound] = useState(false);
+    const [error, setError] = useState(null);              // Add error state
 
     useEffect(() => {
         const fetchInitialPokemon = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get('https://pokeapi.co/api/v2/pokemony?limit=150&offset=0');
+                setError(null); // Clear previous errors
+                const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=150&offset=0');
                 setPokemon(response.data.results);
                 setFilteredPokemon(response.data.results);
-                setOffset(150); // set to 20 for next batch
-
-                console.log("rrrrrrr response:  ", response);
-                console.log('Pokemon data:', response.data.results);
+                setOffset(150); // set to 150 for next batch
 
             } catch (error) {
                 console.error("Error fetching Pokemon: ", error);
+                setError('Failed to load Pokemon. Please check your internet connection and try again.');
             } finally {
                 setLoading(false);
-
             }
         };
 
@@ -88,14 +87,57 @@ const PokemonList = () => {
         // Cleanup function - remove listener when component unmounts
         return () => window.removeEventListener('scroll', handleScroll);
     }, [hasMore, loadingMore, offset]); // Dependencies
-    console.log("pppppppppp pokemon: ", pokemon);
+
+    // Add retry function
+    const handleRetry = () => {
+        setError(null);
+        setPokemon([]);
+        setFilteredPokemon([]);
+        setOffset(0);
+        setLoading(true);
+        
+        // Re-run the initial fetch
+        const fetchInitialPokemon = async () => {
+            try {
+                const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=150&offset=0');
+                setPokemon(response.data.results);
+                setFilteredPokemon(response.data.results);
+                setOffset(150);
+            } catch (error) {
+                console.error("Error fetching Pokemon: ", error);
+                setError('Failed to load Pokemon. Please check your internet connection and try again.');
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchInitialPokemon();
+    };
 
     if (loading) {
         return <Loader />;
     }
 
+    // Show error UI if there's an error and no Pokemon loaded
+    if (error && pokemon.length === 0) {
+        return (
+            <div className="error-container">
+                <h2>Unable to Load Pokemon</h2>
+                <p>{error}</p>
+                <div className="error-details">
+                    <p>This might be due to:</p>
+                    <ul>
+                        <li>Network connection issues</li>
+                        <li>PokeAPI server problems</li>
+                        <li>Temporary service interruption</li>
+                    </ul>
+                </div>
+                <button onClick={handleRetry} className="retry-button">
+                    Try Again
+                </button>
+            </div>
+        );
+    }
     
-
     // Handle search
     const handleSearch = async (term) => {
         setSearchTerm(term);

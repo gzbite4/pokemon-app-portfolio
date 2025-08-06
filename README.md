@@ -14,13 +14,13 @@ Create  application with ReactJS.
 
 First page will display all the pokemon, with lazy loading. Each pokemon details to open in a modal aka One page solution. 
 
-Your application will also provide a search bar to filter pokemon.
+Application will also provide a search bar to filter pokemon.
 
-This application will use an external API, you can find the documentation a this link https://pokeapi.co/
+Application will use an external API, you can find the documentation a this link https://pokeapi.co/
 
 In order to perform the request to the API, you can use Axios.
 
-Your application needs to handle errors. (No internet/bad request.)
+Application needs to handle errors. (No internet/bad request.)
 
 
 **Requirements:**
@@ -31,7 +31,7 @@ Additional components will be in src/components/
 CSS is in a file associated to the component: css for ExampleCompnonent.js will be in ExampleComponent.css.
 On the css/colors/design, you can be creative.
 
-Project will be hosted in the cloud (AWS,Gcloud, Azure.Netlify/...).
+Project will be hosted in the cloud (AWS, Gcloud, Azure.Netlify/...).
 File .gitignore must remove node_modules/
 
 
@@ -121,7 +121,7 @@ npm run build
 
 5. Upload the dist/ folder to Netlify and open link:
     
-
+https://gzpokemon.netlify.app/
 
 ### The Core Team
 Gunta
