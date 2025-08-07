@@ -1,0 +1,183 @@
+.pokemon-card {
+  background: white;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid transparent;
+}
+
+.pokemon-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-color: #3b82f6;
+}
+
+.pokemon-image-container {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.pokemon-image {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.pokemon-image.loaded {
+  opacity: 1;
+}
+
+.image-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+  height: 100%;
+}
+
+.image-error span {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.image-error p {
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.pokemon-info {
+  text-align: center;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* names */
+.pokemon-name {
+  font-size: 1.55rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 0.25rem 0;
+}
+
+.pokemon-id {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin: 0;
+  font-weight: 500;
+  padding: 10px;
+}
+
+/* types */
+.type-electric {
+  background-color: #F8D030;
+}
+
+.type-fire {
+  background-color: #F08030;
+}
+
+.type-water {
+  background-color: #6890F0;
+}
+
+.type-grass {
+  background-color: #78C850;
+}
+
+.type-ice {
+  background-color: #98D8D8;
+}
+
+.type-fighting {
+  background-color: #C03028;
+}
+
+.type-poison {
+  background-color: #A040A0;
+}
+
+.type-ground {
+  background-color: #E0C068;
+}
+
+.type-flying {
+  background-color: #A890F0;
+}
+
+.type-psychic {
+  background-color: #F85888;
+}
+
+.type-bug {
+  background-color: #A8B820;
+}
+
+.type-rock {
+  background-color: #B8A038;
+}
+
+.type-ghost {
+  background-color: #705898;
+}
+
+.type-dragon {
+  background-color: #7038F8;
+}
+
+.type-dark {
+  background-color: #705848;
+}
+
+.type-steel {
+  background-color: #B8B8D0;
+}
+
+.type-fairy {
+  background-color: #EE99AC;
+}
+
+.type-normal {
+  background-color: #a4acaf;
+}
+
+.type-fire,
+.type-water,
+.type-grass,
+.type-electric,
+.type-poison,
+.type-ice,
+.type-fighting,
+.type-ground,
+.type-flying,
+.type-psychic,
+.type-bug,
+.type-rock,
+.type-ghost,
+.type-dragon,
+.type-dark,
+.type-steel,
+.type-normal,
+.type-fairy {
+  padding: 4px 12px;           /* Add padding inside each badge */
+  border-radius: 12px;         /* Rounded corners */
+  color: white;              /* White text */
+  font-size: 0.9rem;          /* Smaller text */
+  font-weight: 600;            /* Bold text */
+  text-transform: capitalize;  /* Capitalize first letter */
+  margin-right: 8px;           /* Space between badges */
+  display: inline-block;       /* Allow margin to work */
+}

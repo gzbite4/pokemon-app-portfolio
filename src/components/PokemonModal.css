@@ -1,0 +1,249 @@
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 16px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(0, 0, 0, 0.1);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #6b7280;
+  z-index: 10;
+  transition: background-color 0.3s;
+}
+
+.modal-close:hover {
+  background: rgba(0, 0, 0, 0.2);
+  color: #374151;
+}
+
+.modal-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+}
+
+.modal-loader {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+.modal-error {
+  text-align: center;
+  padding: 3rem;
+}
+
+.modal-error h3 {
+  color: #dc2626;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.error-close-btn {
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.pokemon-details {
+  padding: 2rem;
+}
+
+.pokemon-header {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  align-items: center;
+}
+
+.pokemon-modal-image {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  background: linear-gradient(145deg, #f8fafc, #e2e8f0);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.pokemon-basic-info h2 {
+  font-size: 2rem;
+  margin: 0 0 0.5rem 0;
+  color: #1f2937;
+}
+
+.pokemon-modal-id {
+  font-size: 1.25rem;
+  color: #6b7280;
+  margin: 0 0 1rem 0;
+  font-weight: 600;
+}
+
+.pokemon-types {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.pokemon-stats-section h3 {
+  color: #374151;
+  margin: 2rem 0 1rem 0;
+  font-size: 1.25rem;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 0.5rem;
+}
+
+.pokemon-characteristics {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.characteristic {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: #f9fafb;
+  border-radius: 8px;
+}
+
+.characteristic .label {
+  font-weight: 600;
+  color: #374151;
+}
+
+.characteristic .value {
+  color: #1f2937;
+  font-weight: 500;
+}
+
+.pokemon-stats {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.stat-item {
+  display: grid;
+  grid-template-columns: 120px 1fr 50px;
+  gap: 1rem;
+  align-items: center;
+}
+
+.stat-name {
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.875rem;
+  text-transform: capitalize;
+}
+
+.stat-bar {
+  background: #e5e7eb;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.stat-fill {
+  height: 100%;
+  transition: width 0.5s ease;
+  border-radius: 4px;
+}
+
+.stat-value {
+  text-align: right;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.pokemon-abilities {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.ability-badge {
+  background: #3b82f6;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.ability-badge small {
+  opacity: 0.8;
+  font-size: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    margin: 1rem;
+    max-height: calc(100vh - 2rem);
+  }
+  
+  .pokemon-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .pokemon-modal-image {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .stat-item {
+    grid-template-columns: 100px 1fr 40px;
+    gap: 0.5rem;
+  }
+  
+  .pokemon-details {
+    padding: 1rem;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
